@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('pdf_files', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('name');
+            $table->integer('page_count');
+            $table->string('size');
+            $table->timestamp('uploaded_at')->useCurrent();
             $table->timestamps();
         });
     }
