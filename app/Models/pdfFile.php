@@ -20,4 +20,9 @@ class pdfFile extends Model
         return $this->hasMany(PdfSentence::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

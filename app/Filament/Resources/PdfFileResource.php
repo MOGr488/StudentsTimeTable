@@ -24,7 +24,11 @@ class PdfFileResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('attachment')->required()->acceptedFileTypes(['application/pdf'])
+                Forms\Components\Select::make('user_id')->options(\App\Models\User::pluck('name', 'id')->toArray())->required(),
+                FileUpload::make('name')->required()->acceptedFileTypes(['application/pdf']),
+                Forms\Components\TextInput::make('page_count')->disabled(),
+                Forms\Components\TextInput::make('size')->disabled(),
+
             ]);
     }
 
